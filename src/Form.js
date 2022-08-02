@@ -1,25 +1,24 @@
 import React, { Component } from "react";
+import Education from "./Education";
 
 class Form extends Component {
-  getExperience() {
-    return (
-      <div className="education">
-        <input type="text" placeholder="School Name"></input>
-        <input type="text" placeholder="Title Of Study"></input>
-        <div className="date">
-          <div>
-            <label>From: </label>
-            <input type="date" placeholder="From "></input>
-          </div>
-          <div>
-            <label>To:</label>
-            <input type="date" placeholder="To "></input>
-          </div>
-        </div>
-      </div>
-    );
+  constructor() {
+    super();
+    this.state = {
+      educationCount: 1,
+    };
+    this.educationCountInc = this.educationCountInc.bind(this);
   }
-  getPracticalExperience() {
+
+  educationCountInc() {
+    if (this.state.educationCount < 3) {
+      this.setState({
+        educationCount: this.state.educationCount + 1,
+      });
+    }
+  }
+
+  PracticalExperience() {
     return (
       <div className="practicalExperience">
         <input type="text" placeholder="Company Name"></input>
@@ -37,6 +36,7 @@ class Form extends Component {
       </div>
     );
   }
+
   render() {
     return (
       <div className="formContainer">
@@ -49,10 +49,12 @@ class Form extends Component {
           <input type="text" placeholder="Address"></input>
           <input type="text" placeholder="Description"></input>
           <h3>Educational Experience</h3>
-          {this.getExperience()}
-          <button type="Button">Add</button>
+          <Education count={this.state.educationCount} />
+          <button type="Button" onClick={this.educationCountInc}>
+            Add
+          </button>
           <h3>Practical Experience</h3>
-          {this.getPracticalExperience()}
+          {this.PracticalExperience()}
           <button type="Button">Add</button>
         </form>
       </div>

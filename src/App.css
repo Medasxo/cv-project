@@ -43,7 +43,8 @@ html, body, #root{
 
 .formContainer{
   background-color: var(--white);
-
+  height: auto;
+  margin-top: 10rem;
   width: 30rem;
   border-radius: 5px;
   
