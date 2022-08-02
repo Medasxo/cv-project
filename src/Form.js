@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import Education from "./Education";
+import Work from "./Work";
 
 class Form extends Component {
   constructor() {
     super();
     this.state = {
       educationCount: 1,
+      workCount: 1,
     };
     this.educationCountInc = this.educationCountInc.bind(this);
     this.educationCountDec = this.educationCountDec.bind(this);
+    this.workCountInc = this.workCountInc.bind(this);
+    this.workCountDec = this.workCountDec.bind(this);
   }
 
   educationCountInc() {
@@ -20,30 +24,26 @@ class Form extends Component {
   }
 
   educationCountDec() {
-    if(this.state.educationCount > 0) {
+    if (this.state.educationCount > 0) {
       this.setState({
         educationCount: this.state.educationCount - 1,
       });
     }
   }
 
-  PracticalExperience() {
-    return (
-      <div className="practicalExperience">
-        <input type="text" placeholder="Company Name"></input>
-        <input type="text" placeholder="Position Title"></input>
-        <div className="date">
-          <div>
-            <label>From: </label>
-            <input type="date" placeholder="From "></input>
-          </div>
-          <div>
-            <label>To:</label>
-            <input type="date" placeholder="To "></input>
-          </div>
-        </div>
-      </div>
-    );
+  workCountInc() {
+    if (this.state.workCount > 0) {
+      this.setState({
+        workCount: this.state.workCount + 1,
+      });
+    }
+  }
+  workCountDec() {
+    if (this.state.workCount < 3) {
+      this.setState({
+        workCount: this.state.workCount - 1,
+      });
+    }
   }
 
   render() {
@@ -66,8 +66,13 @@ class Form extends Component {
             Remove
           </button>
           <h3>Practical Experience</h3>
-          {this.PracticalExperience()}
-          <button type="Button">Add</button>
+          <Work count={this.state.workCount} />
+          <button type="Button" onClick={this.workCountInc}>
+            Add
+          </button>
+          <button type="Button" onClick={this.workCountDec}>
+            Remove
+          </button>
         </form>
       </div>
     );
