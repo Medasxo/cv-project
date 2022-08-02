@@ -8,12 +8,21 @@ class Form extends Component {
       educationCount: 1,
     };
     this.educationCountInc = this.educationCountInc.bind(this);
+    this.educationCountDec = this.educationCountDec.bind(this);
   }
 
   educationCountInc() {
     if (this.state.educationCount < 3) {
       this.setState({
         educationCount: this.state.educationCount + 1,
+      });
+    }
+  }
+
+  educationCountDec() {
+    if(this.state.educationCount > 0) {
+      this.setState({
+        educationCount: this.state.educationCount - 1,
       });
     }
   }
@@ -52,6 +61,9 @@ class Form extends Component {
           <Education count={this.state.educationCount} />
           <button type="Button" onClick={this.educationCountInc}>
             Add
+          </button>
+          <button type="Button" onClick={this.educationCountDec}>
+            Remove
           </button>
           <h3>Practical Experience</h3>
           {this.PracticalExperience()}
