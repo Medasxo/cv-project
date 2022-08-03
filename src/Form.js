@@ -8,11 +8,17 @@ class Form extends Component {
     this.state = {
       educationCount: 1,
       workCount: 1,
+      firstName: "",
+      lastName: "",
+      email: "",
+      address: "",
+      description: "",
     };
     this.educationCountInc = this.educationCountInc.bind(this);
     this.educationCountDec = this.educationCountDec.bind(this);
     this.workCountInc = this.workCountInc.bind(this);
     this.workCountDec = this.workCountDec.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   educationCountInc() {
@@ -45,18 +51,82 @@ class Form extends Component {
       });
     }
   }
+  handleChange(e) {
+    let name = e.target.getAttribute("name");
+    if (name === "firstName") {
+      this.setState({
+        firstName: e.target.value,
+      });
+    }
+    if (name === "lastName") {
+      this.setState({
+        lastName: e.target.value,
+      });
+    }
+    if (name === "email") {
+      this.setState({
+        email: e.target.value,
+      });
+    }
+    if (name === "phoneNumber") {
+      this.setState({
+        phoneNumber: e.target.value,
+      });
+    }
+    if (name === "address") {
+      this.setState({
+        address: e.target.value,
+      });
+    }
+    if (name === "description") {
+      this.setState({
+        description: e.target.value,
+      });
+    }
+    this.props.parentCallback(this.state);
+  }
 
   render() {
     return (
       <div className="formContainer">
         <form className="form">
           <h3>Personal Information</h3>
-          <input type="text" placeholder="First Name"></input>
-          <input type="text" placeholder="Last Name"></input>
-          <input type="email" placeholder="Email"></input>
-          <input type="text" placeholder="Phone Number"></input>
-          <input type="text" placeholder="Address"></input>
-          <input type="text" placeholder="Description"></input>
+          <input
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="text"
+            placeholder="Address"
+            name="address"
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="text"
+            placeholder="Description"
+            name="description"
+            onChange={this.handleChange}
+          ></input>
           <h3>Educational Experience</h3>
           <Education count={this.state.educationCount} />
           <button type="Button" onClick={this.educationCountInc}>
