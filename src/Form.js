@@ -8,11 +8,11 @@ class Form extends Component {
     this.state = {
       educationCount: 1,
       workCount: 1,
-      firstName: "",
-      lastName: "",
-      email: "",
-      address: "",
-      description: "",
+      firstName: " ",
+      lastName: " ",
+      email: " ",
+      address: " ",
+      description: " ",
     };
     this.educationCountInc = this.educationCountInc.bind(this);
     this.educationCountDec = this.educationCountDec.bind(this);
@@ -54,9 +54,11 @@ class Form extends Component {
   handleChange(e) {
     let name = e.target.getAttribute("name");
     if (name === "firstName") {
+      console.log(e.target.value);
       this.setState({
         firstName: e.target.value,
       });
+      
     }
     if (name === "lastName") {
       this.setState({
@@ -85,6 +87,7 @@ class Form extends Component {
     }
     this.props.parentCallback(this.state);
   }
+
 
   render() {
     return (

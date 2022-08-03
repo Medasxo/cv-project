@@ -1,4 +1,4 @@
-import React, { Children, Component } from "react";
+import React, {Component } from "react";
 import Cv from "./Cv";
 import Header from "./Header";
 import Form from "./Form";
@@ -8,16 +8,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      description: "",
+      firstName: " ",
+      lastName: " ",
+      email: " ",
+      phoneNumber: " ",
+      address: " ",
+      description: " ",
     };
   }
 
   handleCallback = (childData) => {
+    
     this.setState({
       firstName: childData.firstName,
       lastName: childData.lastName,
