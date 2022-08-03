@@ -32,14 +32,14 @@ class Form extends Component {
   }
 
   workCountInc() {
-    if (this.state.workCount > 0) {
+    if (this.state.workCount < 3) {
       this.setState({
         workCount: this.state.workCount + 1,
       });
     }
   }
   workCountDec() {
-    if (this.state.workCount < 3) {
+    if (this.state.workCount > 0) {
       this.setState({
         workCount: this.state.workCount - 1,
       });
