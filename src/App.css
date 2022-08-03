@@ -36,18 +36,23 @@ html, body, #root{
   justify-content: center;
   align-items: center;
   gap: 30px;
-  height: 40rem;
+  height: 100%;
   padding-top: 5rem;
 
 }
 
-.formContainer{
+
+.formContainer, .CvContainer{
+  height: 100%;
   background-color: var(--white);
-  height: auto;
-  margin-top: 10rem;
-  width: 30rem;
+ 
+  width: 35rem;
   border-radius: 5px;
   
+}
+
+.formContainer{
+  overflow: scroll;
 }
 
 .form{
