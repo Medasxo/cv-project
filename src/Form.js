@@ -1,56 +1,21 @@
 import React, { Component } from "react";
-import Education from "./Education";
-import Work from "./Work";
 
 class Form extends Component {
   constructor() {
     super();
     this.state = {
-      educationCount: 1,
-      workCount: 1,
       firstName: " ",
       lastName: " ",
       email: " ",
       address: " ",
       description: " ",
+      educationalExperience: " ",
+      practicalExperience: " ",
+      
     };
-    this.educationCountInc = this.educationCountInc.bind(this);
-    this.educationCountDec = this.educationCountDec.bind(this);
-    this.workCountInc = this.workCountInc.bind(this);
-    this.workCountDec = this.workCountDec.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  educationCountInc() {
-    if (this.state.educationCount < 3) {
-      this.setState({
-        educationCount: this.state.educationCount + 1,
-      });
-    }
-  }
-
-  educationCountDec() {
-    if (this.state.educationCount > 0) {
-      this.setState({
-        educationCount: this.state.educationCount - 1,
-      });
-    }
-  }
-
-  workCountInc() {
-    if (this.state.workCount < 3) {
-      this.setState({
-        workCount: this.state.workCount + 1,
-      });
-    }
-  }
-  workCountDec() {
-    if (this.state.workCount > 0) {
-      this.setState({
-        workCount: this.state.workCount - 1,
-      });
-    }
-  }
   handleChange(e) {
     let name = e.target.getAttribute("name");
     if (name === "firstName") {
@@ -83,6 +48,16 @@ class Form extends Component {
     if (name === "description") {
       this.setState({
         description: e.target.value,
+      });
+    }
+    if (name === "educationalExperience") {
+      this.setState({
+        educationalExperience: e.target.value,
+      });
+    }
+    if (name === "practicalExperience") {
+      this.setState({
+        practicalExperience: e.target.value,
       });
     }
     this.props.parentCallback(this.state);
@@ -126,26 +101,28 @@ class Form extends Component {
           ></input>
           <input
             type="text"
+            className="descriptionInput"
             placeholder="Description"
             name="description"
             onChange={this.handleChange}
           ></input>
           <h3>Educational Experience</h3>
-          <Education count={this.state.educationCount} />
-          <button type="Button" onClick={this.educationCountInc}>
-            Add
-          </button>
-          <button type="Button" onClick={this.educationCountDec}>
-            Remove
-          </button>
+          <input
+            type="text"
+            placeholder="Educational Experience"
+            className="educationInput"
+            name="educationalExperience"
+            onChange={this.handleChange}
+          ></input>
           <h3>Practical Experience</h3>
-          <Work count={this.state.workCount} />
-          <button type="Button" onClick={this.workCountInc}>
-            Add
-          </button>
-          <button type="Button" onClick={this.workCountDec}>
-            Remove
-          </button>
+          <input
+            type="text"
+            placeholder="Practical Experience"
+            className="workInput"
+            name="practicalExperience"
+            onChange={this.handleChange}
+          ></input>
+          
         </form>
       </div>
     );

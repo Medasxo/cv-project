@@ -14,6 +14,9 @@ class App extends Component {
       phoneNumber: " ",
       address: " ",
       description: " ",
+      schoolName: " ",
+      educationalExperience: " ",
+      practicalExperience: " ",
     };
   }
 
@@ -26,6 +29,8 @@ class App extends Component {
       phoneNumber: childData.phoneNumber,
       address: childData.address,
       description: childData.description,
+      educationalExperience: childData.educationalExperience,
+      practicalExperience: childData.practicalExperience,
     });
   };
 
@@ -42,6 +47,8 @@ class App extends Component {
             phoneNumber={this.state.phoneNumber}
             address={this.state.address}
             description={this.state.description}
+            educationalExperience={this.state.educationalExperience}
+            practicalExperience={this.state.practicalExperience}
           />
         </div>
       </div>
